@@ -1,6 +1,6 @@
 # Everyday
 
-A personal, responsive habit journal built with React and Vite, intended for private use on an iPhone.
+A personal, responsive habit journal built with React and Vite, intended for use on an iPhone. The app is public; journal entries stay on the device.
 
 ## The Method
 
@@ -33,17 +33,21 @@ npm test
 npm run build
 ```
 
-## Private Hosting
+## GitHub Pages
 
-The source belongs in the private `Zackdw/habit-tracker` repository. A private repository alone does not restrict access to a deployed website. Ordinary GitHub Pages is not the intended hosting solution for this login-only app.
+Repository: https://github.com/Zackdw/habit-tracker
 
-The GitHub Actions workflow only installs dependencies, tests, and builds. It does not publish the website. Production hosting and authentication still need to be configured. The hosting service must enforce access for the owner's account across all routes and assets, including any alternate deployment URLs. A password check implemented only in client-side JavaScript is not sufficient.
+Website: https://zackdw.github.io/habit-tracker/
 
-Build command: `npm run build`. Static output directory: `dist`. Vite uses relative asset paths. No cloud resources or paid services are created by this project.
+Both the repository and the website are public. Visitors have their own browser-local journal. There is no login, server database, or GitHub API integration in the app, and journal entries are not sent to GitHub.
+
+In repository **Settings > Pages**, the build source is **GitHub Actions**. Pushing to `main` runs tests, builds, and deploys `dist` using `.github/workflows/ci.yml`. Pull requests run checks without deploying. Vite uses relative asset paths for the repository URL.
+
+Never commit personal backup files to this public repository: they would be readable by others and could remain in Git history after deletion. Import/export is a manual, local transfer, not a repository update. Do not embed a GitHub token in browser code.
 
 ## iPhone Use
 
-Once authenticated HTTPS hosting is configured, open the production URL in Safari. Use Safari's Share menu to add it to the Home Screen if desired. The local development URL is only for this computer, not an on-the-go iPhone address.
+Open https://zackdw.github.io/habit-tracker/ in Safari. Use Safari's Share menu to add it to the Home Screen if desired. The local development URL is only for this computer, not an on-the-go iPhone address.
 
 Entries remain local to the browser or Home Screen app that created them; do not assume they transfer between those contexts. Export a backup before switching devices, origins, or browser contexts, and import it in the destination. There is currently no cloud sync or offline service worker.
 
